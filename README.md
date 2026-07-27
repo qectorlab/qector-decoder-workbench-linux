@@ -21,7 +21,7 @@ Professional desktop application for quantum error correction research, evaluati
 | **Linux** | `qector-workbench_3.5.1_amd64.deb` | Ubuntu 20.04+ / Debian 11+ |
 | **macOS** | `QectorWorkbench-3.5.1.dmg` | macOS 12+ (Apple Silicon & Intel) |
 
-**[Latest Release](https://github.com/GuillaumeLessard/qector-workbench/releases/latest)**
+**[Latest Release](https://github.com/qectorlab/qector-decoder-workbench/releases/latest)**
 
 
 ## Quick Start
