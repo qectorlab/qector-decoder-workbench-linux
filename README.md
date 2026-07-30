@@ -99,8 +99,4 @@ Included in releases:
 * PyPI: qector-decoder-v3
 * Website & commercial licensing: qector.store
 
-<div align="center">
-  <a href="https://github.com/sponsors/qectorlab">
-    <img src="https://img.shields.io/badge/💖_Sponsor_QECTOR_Development-ea4aaa?style=for-the-badge&logo=github" alt="Sponsor qectorlab" />
-  </a>
-</div>
+[![Sponsor qectorlab](https://img.shields.io/badge/Sponsor-qectorlab-ea4aaa?style=for-the-badge&logo=github)](https://github.com/sponsors/qectorlab)
