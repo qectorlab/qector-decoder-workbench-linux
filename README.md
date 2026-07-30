@@ -98,3 +98,5 @@ Included in releases:
 * Core library: GuillaumeLessard/qector-decoder
 * PyPI: qector-decoder-v3
 * Website & commercial licensing: qector.store
+
+<iframe src="https://github.com/sponsors/qectorlab/card" title="Sponsor qectorlab" height="225" width="600" style="border: 0;"></iframe>
