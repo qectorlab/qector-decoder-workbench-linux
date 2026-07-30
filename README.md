@@ -15,9 +15,9 @@ Professional desktop application for quantum error correction research, evaluati
 
 ## 🚀 Support QECTOR Development
 
-[![Sponsor qectorlab](https://shields.io)](https://github.com)
+[![Sponsor qectorlab](https://img.shields.io/badge/Sponsor-qectorlab-ea4aaa?style=for-the-badge&logo=github)](https://github.com/sponsors/qectorlab)
 
-[![Open Collective](https://shields.io)](https://opencollective.com)
+[![Open Collective](https://img.shields.io/badge/Open%20Collective-qectorlab-3385FF?style=for-the-badge&logo=opencollective)](https://opencollective.com/qectorlab)
 
 
 
