@@ -17,7 +17,7 @@ Professional desktop application for quantum error correction research, evaluati
 
 [![Sponsor qectorlab](https://img.shields.io/badge/Sponsor-qectorlab-ea4aaa?style=for-the-badge&logo=github)](https://github.com/sponsors/qectorlab)
 
-[![Open Collective Banner](https://opencollective.com)](https://opencollective.com/qector-research-and-benchmark)
+[![Open Collective Banner](https://opencollective.com)](https://opencollective.com/qector-research-and-benchmark) 
 
 
 I am dedicated to building high-performance, production-ready Quantum Error Correction (QEC) software infrastructure designed for the next era of fault-tolerant computing.
