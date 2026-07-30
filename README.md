@@ -13,8 +13,6 @@ Professional desktop application for quantum error correction research, evaluati
 **Website:** [qector.store](https://qector.store)
 **Author:** Guillaume Lessard / iD01t Productions · ORCID: [0009-0000-3465-3753](https://orcid.org/0009-0000-3465-3753)
 
----
-
 ## 🚀 Support QECTOR Development
 
 [![Sponsor qectorlab](https://img.shields.io/badge/Sponsor-qectorlab-ea4aaa?style=for-the-badge&logo=github)](https://github.com/sponsors/qectorlab)
@@ -37,9 +35,7 @@ Running continuous integration pipelines for high-distance qLDPC codes and massi
 
 This financial baseline ensures that every zero-allocation hot-path optimization is thoroughly benchmarked on enterprise-grade hardware before deployment. Whether you choose a monthly or one-time contribution, your support provides the essential runway needed to maintain this complex toolchain independently.
 
-👉 **[Click here to sponsor iD01t Productions & QECTOR](https://qector.store)**
-
----
+👉 **[Click here to sponsor iD01t Productions & QECTOR](https://github.com/sponsors/qectorlab)**
 
 ## Downloads
 
@@ -50,8 +46,6 @@ This financial baseline ensures that every zero-allocation hot-path optimization
 | macOS | `QectorWorkbench-3.5.1.dmg` | macOS 12+ (Apple Silicon & Intel) |
 
 👉 **[Download Latest Release](https://qector.store)**
-
----
 
 ## Quick Start
 
@@ -78,8 +72,6 @@ QectorWorkbench-Portable.exe --mcp          # Windows
 qector-workbench --mcp                      # Linux / macOS
 ```
 
----
-
 ## Key Features
 
 - **Interactive GUI:** Code Explorer, Decoder Lab, Benchmark Suite, Batch/Streaming, Diagnostics, Documentation Studio.
@@ -90,14 +82,10 @@ qector-workbench --mcp                      # Linux / macOS
 - **Automatic Provisioning:** Auto-fetches backend from PyPI on first run (subsequent runs fully offline).
 - **Self-Healing Engine:** Built-in diagnostic and recovery routines.
 
----
-
 ## Licensing
 
 - **Workbench (this application):** See `EULA.txt`. Royalty-free for any purpose (including commercial) as long as QECTOR notices are retained.
 - **Backend (`qector-decoder-v3`):** Separately licensed. Free for personal, academic, and non-commercial research. Commercial use requires a paid license at [qector.store/pricing](https://qector.store/pricing).
-
----
 
 ## Documentation
 
@@ -111,8 +99,6 @@ Included in release packages:
 - `QECTOR_Quick_Start_Guide.pdf`
 - `QECTOR_LLM_Manual.json` — Machine-readable agent guide
 
----
-
 ## Citation
 
 ```bibtex
@@ -125,8 +111,6 @@ Included in release packages:
   orcid   = {0009-0000-3465-3753}
 }
 ```
-
----
 
 ## Related
 
