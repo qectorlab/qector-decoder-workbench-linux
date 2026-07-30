@@ -17,9 +17,11 @@ Professional desktop application for quantum error correction research, evaluati
 
 ## 🚀 Support QECTOR Development
 
+[![Sponsor qectorlab](https://img.shields.io/badge/Sponsor-qectorlab-ea4aaa?style=for-the-badge&logo=github)](https://github.com/sponsors/qectorlab)
+
 I am dedicated to building high-performance, production-ready Quantum Error Correction (QEC) software infrastructure designed for the next era of fault-tolerant computing.
 
-My primary focus is the development of the QECTOR Decoder engine, a high-throughput decoding framework written in pure Rust and engineered for bare-metal performance, bypassing standard heap allocations and utilizing zero-allocation hot paths.
+My primary focus is the development of the QECTOR Decoder engine—a high-throughput decoding framework written in pure Rust and engineered for bare-metal performance, bypassing standard heap allocations and utilizing zero-allocation hot paths.
 
 ### Why Your Sponsorship Matters
 
