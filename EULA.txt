@@ -2,7 +2,7 @@
 
                      END USER LICENSE AGREEMENT (EULA)
 
-                      QECTOR Decoder Workbench v3.5.1
+                      QECTOR Decoder Workbench v0.5.2
 
 ================================================================================
 
@@ -121,23 +121,17 @@ User shall not:
 
 
 --------------------------------------------------------------------------------
-  5.  AUTOMATIC UPDATES & NETWORK FEATURES
+  5.  NETWORK & OFFLINE OPERATION
 --------------------------------------------------------------------------------
 
-5.1  The Software may check for available updates by querying public
-     package registries (PyPI) at launch. This check transmits only the
-     current version identifier and receives only the latest available
-     version number. No personal data, usage telemetry, or identifying
-     information is transmitted.
+5.1  The Software is fully self-contained and operates entirely offline.
+     The decoder engine wheel is bundled inside the application and is
+     activated into a per-user managed directory on first launch without
+     any network access. No update checks, package downloads, or online
+     registrations occur at launch or during use.
 
-5.2  The Software may download decoder engine updates from PyPI into a
-     per-user managed directory when a newer compatible version is
-     available. User may disable this behavior by setting the environment
-     variable QECTOR_OFFLINE=1.
-
-5.3  Apart from update checks described above, the Software does not
-     collect, transmit, or store any personal data, usage analytics,
-     crash reports, or telemetry of any kind.
+5.2  The Software does not collect, transmit, or store any personal data,
+     usage analytics, crash reports, or telemetry of any kind.
 
 
 --------------------------------------------------------------------------------
@@ -344,7 +338,7 @@ fees) arising out of or related to:
 
 ================================================================================
 
-  QECTOR Decoder Workbench v3.5.1
+  QECTOR Decoder Workbench v0.5.2
   (c) 2026 Guillaume Lessard / iD01t Productions
   All rights reserved except as expressly granted herein.
 
