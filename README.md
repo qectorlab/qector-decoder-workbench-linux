@@ -1,121 +1,141 @@
 # QECTOR Decoder Workbench
 
-**Version 3.5.1** · Backend: `qector-decoder-v3==0.6.9`
+**Windows build · v0.5.2** — Backend: `qector-decoder-v3` **v0.7.0**
 
-Professional desktop application for quantum error correction research, evaluation, and documentation.
+Professional quantum error-correction analysis platform built on `qector_decoder_v3` (compiled Rust core + public Python layer). Features 16 decoders, 10 code families (including qLDPC and color codes), batch/streaming decode, hardware detection, a resilient self/auto-debug backend, a 56-tool MCP server, and multi-format documentation export.
 
-- 13 decoder algorithms
-- 9 code families (surface, toric, heavy hex, bicycle qLDPC, and more)
-- 47-tool Model Context Protocol (MCP) server for AI agents
-- Portable Windows executable, Linux `.deb`, macOS `.dmg`
-- Full GUI, command line, and headless MCP mode
+[![License](https://img.shields.io/badge/license-source--available-blue)](EULA.txt)
+[![Backend](https://img.shields.io/badge/backend-qector--decoder--v3%200.7.0-informational)](https://pypi.org/project/qector-decoder-v3/0.7.0/)
 
-**Website:** [qector.store](https://qector.store)
-**Author:** Guillaume Lessard / iD01t Productions · ORCID: [0009-0000-3465-3753](https://orcid.org/0009-0000-3465-3753)
+A professional desktop application for quantum error correction (QEC) research, decoder evaluation, and reproducible benchmarking, running fully offline on Windows.
 
-## 🚀 Support QECTOR Development
+## Table of Contents
 
-[![Sponsor qectorlab](https://img.shields.io/badge/Sponsor-qectorlab-ea4aaa?style=for-the-badge&logo=github)](https://github.com/sponsors/qectorlab)
+- [Overview](#overview)
+- [Download & Quick Start](#download--quick-start)
+- [System Requirements](#system-requirements)
+- [Features](#features)
+- [License](#license)
+- [Citation](#citation)
+- [Related](#related)
 
-[![Open Collective](https://img.shields.io/badge/Open%20Collective-qectorlab-3385FF?style=for-the-badge&logo=opencollective)](https://opencollective.com/qectorlab)
+## Overview
 
-I am dedicated to building high-performance, production-ready Quantum Error Correction (QEC) software infrastructure designed for the next era of fault-tolerant computing.
+The Windows portable build bundles its own Python runtime, the scientific stack, **and** the `qector_decoder_v3` wheel. It runs with no external Python, pip, or internet connection: on first launch the bundled decoder wheel is activated into a per-user managed site automatically. No online update checks are performed — the app runs entirely from what ships in the box.
 
-My primary focus is the development of the QECTOR Decoder engine, a high-throughput decoding framework written in pure Rust and engineered for bare-metal performance, bypassing standard heap allocations and utilizing zero-allocation hot paths.
+> **Honest posture (from the upstream QECTOR Decoder v3 manual):** every LER/throughput/latency figure is hardware-, driver-, seed-, and workload-dependent simulation — regenerate before quoting. PyMatching is the speed leader on standard surface-code MWPM; QECTOR's exact `BlossomDecoder` reaches its logical error rate but is not faster. Every decoder always satisfies `H·c == s (mod 2)`. This is a research/evaluation platform, not a real-time or fault-tolerant hardware decoder.
 
-### Why Your Sponsorship Matters
+## Download & Quick Start
 
-Maintaining and engineering a deep-tech software stack requires extensive time, computational research, and hardware resources. Your sponsorship directly enables me to remain focused full-time on refining algorithms, expanding hardware compatibility, and keeping advanced quantum research utilities free for the global scientific community.
+👉 **Download the latest release from this repository's [Releases page](../../releases/latest).**
 
-### 💻 Infrastructure & Hardware Requirements
+1. Download `QectorWorkbench-Portable.exe`.
+2. Double-click to launch. No installation, no admin rights, no internet connection required.
 
-Running continuous integration pipelines for high-distance qLDPC codes and massive syndrome defect datasets requires uninterrupted access to specialized hardware. Reaching $1,500 per month directly funds:
+For the headless MCP server:
 
-- Dedicated bare-metal GPU regression testing instances.
-- Cloud cluster runtimes.
-- Local hardware workshop infrastructure overhead.
-
-This financial baseline ensures that every zero-allocation hot-path optimization is thoroughly benchmarked on enterprise-grade hardware before deployment. Whether you choose a monthly or one-time contribution, your support provides the essential runway needed to maintain this complex toolchain independently.
-
-👉 **[Click here to sponsor iD01t Productions & QECTOR](https://github.com/sponsors/qectorlab)**
-
-## Downloads
-
-| Platform | File | Notes |
-|---|---|---|
-| Windows | `QectorWorkbench-Portable.exe` or `.zip` | Fully portable, no install required |
-| Linux | `qector-workbench_3.5.1_amd64.deb` | Ubuntu 20.04+ / Debian 11+ |
-| macOS | `QectorWorkbench-3.5.1.dmg` | macOS 12+ (Apple Silicon & Intel) |
-
-👉 **[Download Latest Release](https://qector.store)**
-
-## Quick Start
-
-### Windows
-
-1. Extract the zip (or run the portable `.exe` directly).
-2. Double-click `QectorWorkbench-Portable.exe`.
-
-### Linux
-
-```bash
-sudo apt install ./qector-workbench_3.5.1_amd64.deb
-qector-workbench
+```
+QectorWorkbench-Portable.exe --mcp     # 56-tool stdio MCP server (no display needed)
 ```
 
-### macOS
+Runtime data (logs, exported documents) is written to your per-user data directory (`%LOCALAPPDATA%\QectorWorkbench`; override with `QECTOR_DATA_DIR`).
 
-1. Mount the DMG and drag to Applications.
+## System Requirements
 
-### MCP Server (AI Agents)
+| Requirement | Detail |
+|---|---|
+| OS | Windows 10 (64-bit) or later |
+| Disk space | Sufficient for the bundled Python runtime, scientific stack, and decoder wheel (portable, single executable) |
+| Internet | Not required — the backend is provisioned entirely from the bundled wheel on first launch |
+| GPU (optional) | CUDA-capable NVIDIA GPU for accelerated batch decode; CPU-only operation is fully supported |
 
-```bash
-QectorWorkbench-Portable.exe --mcp          # Windows
-qector-workbench --mcp                      # Linux / macOS
-```
+## Features
 
-## Key Features
+### Code Explorer
 
-- **Interactive GUI:** Code Explorer, Decoder Lab, Benchmark Suite, Batch/Streaming, Diagnostics, Documentation Studio.
-- **13 Decoders:** Includes exact Blossom MWPM, Union Find family, BP OSD, belief matching, auto router, hybrid cascade.
-- **9 Code Families:** Graph-like and qLDPC.
-- **Publication-Grade Charts:** Multi-format export (MD, JSON, HTML, LaTeX, PDF, SVG).
-- **47-Tool MCP Server:** stdio JSON-RPC 2.0.
-- **Automatic Provisioning:** Auto-fetches backend from PyPI on first run (subsequent runs fully offline).
-- **Self-Healing Engine:** Built-in diagnostic and recovery routines.
+Build codes from 10 families with configurable distance/parameter. Live properties display including qubits, checks, and code rate, plus a clean bipartite Tanner-graph view.
 
-## Licensing
+- **Graphlike / topological:** repetition, ring, rotated_surface, unrotated_surface, toric, heavy_hex, and `hypergraph_product` (a CSS code built from a repetition-code seed — graphlike, so all matching decoders apply).
+- **qLDPC:** `bicycle` (parameter = circulant size) and `bivariate_bicycle` (the IBM BB code family — e.g. the [[72,12,6]] "gross" code — selected from verified presets). qLDPC codes are non-graphlike: use `bp_osd`, `blossom`, `hybrid`, or `auto_router` (the Diagnostics tab's resilient decode auto-falls-back to a compatible decoder).
+- **Color codes:** `color_code` (triangular & 2D), decoded with the native colour-code decoder.
 
-- **Workbench (this application):** See `EULA.txt`. Royalty-free for any purpose (including commercial) as long as QECTOR notices are retained.
-- **Backend (`qector-decoder-v3`):** Separately licensed. Free for personal, academic, and non-commercial research. Commercial use requires a paid license at [qector.store/pricing](https://qector.store/pricing).
+### Decoder Lab
 
-## Documentation
+Test any of 16 decoders with configurable error rate and seed. View error, syndrome, and correction arrays. Every decoder is verified to satisfy `H·c == s (mod 2)`. A **Clear Decoder Cache** button frees cached decoder instances between experiments.
 
-Included in release packages:
+| Decoder | Notes |
+|---|---|
+| `union_find` / `fast_union_find` | Fast approximate decode; higher LER than exact MWPM (throughput lever). |
+| `blossom` | Weight-optimal exact MWPM; matches PyMatching's LER but is not faster. |
+| `sparse_blossom` | Region-growing, near-optimal (experimental); **not exact**. |
+| `sparse_blossom_radix_neighbors` | Radix-neighbor variant of the region-growing decoder. |
+| `bp_osd` | Belief propagation + ordered statistics for LDPC / quantum-LDPC codes; tunable via `bp_method` (exact\|min_sum) and `osd_order` (0\|1\|2). |
+| `auto` | Self-selecting decoder: picks the best available backend per problem size. |
+| `hybrid` | Combines a fast heuristic pass with exact matching; trainable weights. |
+| `lookup_table` | Precomputed syndrome→correction table with O(1) lookup (refused above 20 checks). |
+| `predecoded` | Resolves easy/low-weight syndromes in a fast pre-decoding pass before matching. |
+| `auto_router` | Policy decoder: inspects the code and dispatches the best concrete decoder — matching for graphlike codes, bp_osd for qLDPC. Universally compatible, including on `bivariate_bicycle`. |
+| `hybrid_cascade` | Union-Find pre-filter with Blossom/BP-OSD escalation; exposes live cascade statistics. Graphlike codes only. |
+| `gnn_belief_matching` | GNN-predicted per-qubit weights guide a weighted matching decode, with a faithfulness fallback to plain MWPM. Graphlike codes. |
+| `belief_matching` | Sum-product BP posteriors reweight an exact Blossom matching step; faithfulness-checked with MWPM fallback. |
+| `two_stage` | Two-stage decode pipeline (fast stage + exact escalation). |
+| `ambiguity_cluster` | Ambiguity-clustering decoder for degenerate syndrome structure. |
+| `colour_code` | Native color-code decoder (restricted to true color-code topologies). |
 
-- `README.txt` — Full package overview
-- `EULA.txt` — End User License Agreement
-- Platform user manuals (Windows / Linux / macOS)
-- `QECTOR_API_Reference.md` / `.pdf`
-- `QECTOR_MCP_Integration_Guide.pdf`
-- `QECTOR_Quick_Start_Guide.pdf`
-- `QECTOR_LLM_Manual.json` — Machine-readable agent guide
+### Benchmark Suite
+
+Run configurable benchmarks with throughput/latency metrics. Export results to JSON.
+
+### Batch & Streaming
+
+Batch decode multiple error samples with success rate. Sliding-window streaming session controls.
+
+### Hardware Dashboard
+
+Auto-detect CUDA, OpenCL, and CPU backends. System info with CPU/RAM utilization and hardware-optimized decoder recommendations. Note: the standard backend ships a CUDA path but no OpenCL kernels, so OpenCL reports unavailable unless the backend was built from source with the `opencl` feature.
+
+### Diagnostics (Self / Auto-Debug)
+
+- **Run Self-Diagnostics** — environment/decoder/hardware self-test with per-check pass/warn/fail status.
+- **Probe Decoders** — reports which decoders produce a valid (syndrome-verified) correction for the current code.
+- **Resilient Decode** — decodes with an automatic multi-decoder fallback chain (verifying `H·c == s` at each step) and shows the full attempt trace.
+
+### Documentation Studio
+
+Export professional documentation in Markdown, HTML, JSON, LaTeX, PDF (matplotlib multi-page) and SVG (standalone Tanner graph) with full provenance metadata.
+
+### MCP Server
+
+56-tool Model Context Protocol server (stdio JSON-RPC 2.0) for programmatic access — including `self_diagnostics`, `probe_decoders`, `resilient_decode`, `version_info`, `diagnostic_decode`, `native_recommend`, `native_streaming`, `list_codes`, `compat_report`, hybrid-cascade stats, neural pre-decoder training, and decoder-option-aware decode tools. Every tool is wired to the real decoder backend, not a mock or stub.
+
+### Offline Versioning
+
+- The window title and status bar show the workbench version (v0.5.2) and the installed decoder backend version (qector-decoder-v3 v0.7.0).
+- No PyPI queries, no auto-updater: the shipped bundle is the single source of truth.
+
+## License
+
+**Workbench:** source-available — see EULA (free use including commercial, with QECTOR watermark retention per EULA §2).
+
+**Backend `qector-decoder-v3`:** separately licensed by Guillaume Lessard / iD01t Productions — free for personal/academic/non-commercial research; commercial use requires a paid commercial license (www.qector.store, admin@qector.store). Honor the backend license for any commercial deployment.
 
 ## Citation
 
 ```bibtex
-@software{lessard2026qector,
+@software{lessard2026qectorworkbench,
   author  = {Guillaume Lessard},
-  title   = {{QECTOR Decoder v3}: Rust/Python Quantum Error Correction Decoding Platform},
+  title   = {{QECTOR Decoder Workbench}: Windows Desktop Application for Quantum Error Correction Analysis},
   year    = {2026},
-  version = {0.6.9},
-  url     = {https://www.qector.store},
+  version = {0.5.2},
+  url     = {https://github.com/qectorlab/qector-decoder-workbench-windows},
   orcid   = {0009-0000-3465-3753}
 }
 ```
 
 ## Related
 
+- **PyPI Package:** [qector-decoder-v3 0.7.0](https://pypi.org/project/qector-decoder-v3/0.7.0/)
 - **Core Library:** [GuillaumeLessard/qector-decoder](https://github.com/GuillaumeLessard/qector-decoder)
-- **PyPI Package:** [qector-decoder-v3](https://pypi.org/project/qector-decoder-v3/)
 - **Commercial Licensing:** [qector.store](https://qector.store)
+
+Author: Guillaume Lessard / iD01t Productions · ORCID [0009-0000-3465-3753](https://orcid.org/0009-0000-3465-3753) · [www.qector.store](https://www.qector.store)
