@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "QECTOR Decoder Workbench (Linux)"
+version: "0.5.2"
+date-released: "2026-07-26"
+url: "https://www.qector.store"
+repository-code: "https://github.com/qectorlab/qector-decoder-workbench-linux"
+authors:
+  - family-names: "Lessard"
+    given-names: "Guillaume"
+    orcid: "https://orcid.org/0009-0000-3465-3753"
+    affiliation: "iD01t Productions"
+license: "LicenseRef-Proprietary"
+abstract: "Native Linux desktop application (x86_64) for quantum error correction research and evaluation, built on the qector-decoder-v3 0.7.0 Rust/Python backend. Provides 16 decoder algorithms, 10 code families (including qLDPC and color codes), a full GUI, command-line interface, and a 56-tool Model Context Protocol (MCP) server. Distributed as a portable AppImage or as distro-tuned Debian packages, fully offline after first launch."
+keywords:
+  - "quantum error correction"
+  - "QEC"
+  - "decoder"
+  - "surface code"
+  - "qLDPC"
+  - "MWPM"
+  - "BP-OSD"
+  - "Workbench"
+  - "Linux"
+  - "AppImage"
