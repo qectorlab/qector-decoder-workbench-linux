@@ -1,4 +1,4 @@
-# QECTOR Decoder Workbench — Linux
+# QECTOR Decoder Workbench - Linux
 
 [![License](https://img.shields.io/badge/license-source--available-blue)](EULA.txt)
 [![Backend](https://img.shields.io/badge/backend-qector--decoder--v3%200.7.0-informational)](https://pypi.org/project/qector-decoder-v3/0.7.0/)
