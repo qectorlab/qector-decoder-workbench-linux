@@ -1,6 +1,6 @@
 # QECTOR Decoder Workbench
 
-**Windows build · v0.5.2** — Backend: `qector-decoder-v3` **v0.7.0**
+**Windows build · v0.5.2** - Backend: `qector-decoder-v3` **v0.7.0**
 
 Professional quantum error-correction analysis platform built on `qector_decoder_v3` (compiled Rust core + public Python layer). Features 16 decoders, 10 code families (including qLDPC and color codes), batch/streaming decode, hardware detection, a resilient self/auto-debug backend, a 56-tool MCP server, and multi-format documentation export.
 
