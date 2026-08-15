@@ -1,6 +1,3 @@
-Here is a formatted, ready-to-use Markdown template for your GitHub `README.md`. It organizes your release notes into clean, scannable sections with proper code blocks and typography.
-
-```markdown
 # QECTOR Decoder Workbench v1.0.0 - Windows x64 Portable
 
 [![Release](https://img.shields.io/github/v/release/qectorlab/qector-decoder-workbench-windows?label=Latest%20Release&style=flat-square)](https://github.com/qectorlab/qector-decoder-workbench-windows/releases/latest)
