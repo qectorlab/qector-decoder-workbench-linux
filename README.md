@@ -25,7 +25,7 @@ QectorWorkbench-Portable.exe --mcp
 
 ## ✨ What's in this Release
 
-* **17 Decoders & 10 Code Families:** Full support for surface codes, qLDPC (bicycle / bivariate bicycle), heavy-hex, color codes, and hypergraph products, fully wired to the bundled `qector-decoder-v3 1.0.0` backend.
+* **15 Decoders & 10 Code Families:** Full support for surface codes, qLDPC (bicycle / bivariate bicycle), heavy-hex, color codes, and hypergraph products, fully wired to the bundled `qector-decoder-v3 1.0.0` backend.
 * **82-Tool MCP Server:** `stdio` JSON-RPC 2.0 server for programmatic and AI agent interaction with per-tool 60-second timeouts, busy guards, and 1 MB result limits.
 * **Offline Backend Bundling:** Ships with the platform-specific `qector_decoder_v3-1.0.0` wheel pre-packaged inside the executable. Automatically activated into a per-user managed site on first boot; purges outdated managed decoders from older releases automatically.
 * **Full CLI Infrastructure:** Adds 12 CLI subcommands (`compare`, `batch`, `stream`, `train`, `export`, `import`, `matrix`, `serve`, `doctor`, `completions`) with shell auto-completion support (Bash, Zsh, PowerShell).
