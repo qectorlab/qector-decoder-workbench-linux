@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   <img src="assets/logo_banner.png" alt="QECTOR Logo" width="80%" />
 </p>
 
@@ -6,11 +6,11 @@
 
 <p align="center">
   <strong>Professional Quantum Error Correction Analysis Suite</strong><br/>
-  <em>17 Decoders · 10 Code Families · 85-Tool MCP Server · GPU Acceleration</em>
+  <em>19 Decoders · 10 Code Families · 86-tool MCP Server · GPU Acceleration</em>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.5-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Version"/>
+  <img src="https://img.shields.io/badge/version-1.0.6-0078D4?style=for-the-badge&logo=linux&logoColor=white" alt="Version"/>
   <img src="https://img.shields.io/badge/backend-v1.0.0_(Rust%2FPyO3)-E44D26?style=for-the-badge&logo=rust&logoColor=white" alt="Backend"/>
   <img src="https://img.shields.io/badge/python-=3.11-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
   <img src="https://img.shields.io/badge/MCP_Tools-85-8A2BE2?style=for-the-badge" alt="MCP Tools"/>
@@ -36,10 +36,10 @@
 > **Zero Install · Zero Config · Zero Dependencies**
 > Download. Double-click. Decode.
 
-> This repository is a **release-only distribution mirror** of the v1.0.5
-> Windows build. It contains no source files · only the release artifacts listed
+> This repository is a **release-only distribution mirror** of the v1.0.6
+> Linux build. It contains no source files · only the release artifacts listed
 > below. Binary packages are published on the
-> [Releases](https://github.com/qectorlab/qector-decoder-workbench-windows/releases)
+> [Releases](https://github.com/qectorlab/qector-decoder-workbench-linux/releases)
 > page.
 
 ---
@@ -48,29 +48,34 @@
 
 ### Portable `.exe` (Recommended)
 
+```bash
+# Portable binary (no install)
+unzip QectorWorkbench-Linux-v1.0.6.zip  # or download QectorWorkbench-Portable directly
+chmod +x QectorWorkbench-Portable
+./QectorWorkbench-Portable                      # GUI
+./QectorWorkbench-Portable --cli diagnostics   # self-check
+# Debian package
+sudo dpkg -i qector-workbench_1.0.6_amd64.deb
+qector-workbench --cli diagnostics
 ```
-1.  Download  QectorWorkbench-v1.0.5-Windows-x64-Public.zip  from Releases
-2.  Extract the archive to a folder of your choice
-3.  Double-click  QectorWorkbench-Portable.exe  · no installation required
-4.  The bundled decoder activates automatically on first run
-```
+bundled manylinux wheel activates offline on first launch into `~/.local/share/QectorWorkbench/decoder_site/<abi_tag>`
 
 ### CLI Mode
 
 ```bash
-# Launch directly from the portable .exe
-QectorWorkbench-Portable.exe decode --family rotated_surface --distance 5 --decoder blossom
-QectorWorkbench-Portable.exe benchmark --family toric --distance 7 --samples 10000
-QectorWorkbench-Portable.exe diagnostics
+# Portable binary
+./QectorWorkbench-Portable --cli decode --family rotated_surface --distance 5 --decoder blossom
+./QectorWorkbench-Portable --cli benchmark --family toric --distance 7 --samples 10000
+./QectorWorkbench-Portable --cli diagnostics
 ```
 
 ### MCP Server (AI/LLM Integration)
 
 ```bash
-QectorWorkbench-Portable.exe --mcp
+./QectorWorkbench-Portable --mcp  # or qector-workbench --mcp
 ```
 
-Launches a stdio JSON-RPC 2.0 MCP server with all **85 tools**. The server is
+Launches a stdio JSON-RPC 2.0 MCP server with all **86 tools**. The server is
 local-only and communicates through stdio; it does not open an external network
 connection. No window is required to run the headless MCP mode.
 
@@ -85,14 +90,17 @@ connection. No window is required to run the headless MCP mode.
 
 ## 📥 Downloads
 
-**v1.0.5 release assets** (all available on the
-[Releases](https://github.com/qectorlab/qector-decoder-workbench-windows/releases/tag/v1.0.5)
+**v1.0.6 release assets** (all available on the
+[Releases](https://github.com/qectorlab/qector-decoder-workbench-linux/releases/tag/v1.0.6)
 page, each with SHA-256 digests in `SHA256SUMS.txt`):
 
 | Artifact | Contents |
 |:---------|:---------|
-| **`QectorWorkbench-v1.0.5-Windows-x64-Public.zip`** | `QectorWorkbench-Portable.exe` + `qector_decoder_v3` 1.0.0 wheel (5 wheels) + `manuals/` (Windows) + `EULA.txt`/`EULA.rtf` + `LICENSE` + `CITATION.cff` + `RELEASE_MANIFEST.txt` + `SHA256SUMS.txt` + `SBOM.json` |
-| **`QectorWorkbench-Portable.exe`** | The Windows executable on its own, if you do not want the bundle |
+| **`QectorWorkbench-Portable`** | Linux ELF portable (106 MB) — GUI + CLI + 85-tool MCP server + bundled `qector_decoder_v3` 1.0.0 manylinux wheels (5 wheels) — `chmod +x` and run |
+| **`qector-workbench_1.0.6_amd64.deb`** | Debian package (9.2 MB) — installs to `/opt/qector-workbench` + `/usr/local/bin/qector-workbench` + desktop entry; decoder from bundled `offline_wheel/` manylinux wheel |
+| **`checksums-sha256.txt`** + `.asc` | SHA-256 manifest (63 artifacts) + GPG detached signature (RSA 4096 `F7214C98E1F0263A`) |
+| **`sbom.cyclonedx.json`** + `.asc` | CycloneDX 1.5 SBOM + GPG signature |
+| **`PUBLIC_KEY_GPG_RELEASE.asc`** | GPG release public key (RSA 4096) |
 
 > **Fully local, no network required.** The portable executable embeds the decoder
 > wheel and provisions it into a per-user managed site on first launch, so a lab
@@ -101,18 +109,15 @@ page, each with SHA-256 digests in `SHA256SUMS.txt`):
 > rather `pip install` the decoder into their own Python.
 
 **Runtime data** (logs, exported documents, managed decoder site) is written to
-`%LOCALAPPDATA%\QectorWorkbench`. Override the location entirely with the
-`QECTOR_DATA_DIR` environment variable.
+`~/.local/share/QectorWorkbench` (or `$XDG_DATA_HOME/QectorWorkbench`). Override with `QECTOR_DATA_DIR`.
 
-macOS requires a build on Apple hardware and is not included until that build
-is produced and signed. Windows and Linux artifacts are built from the same
-air-gapped source policy and include SHA-256 manifests.
+Also mirrored on Cloudsmith: https://cloudsmith.io/~qector/repos/qector-decoder-workbench-linux/packages/ — `qector/qector-decoder-workbench-linux`. Windows and Linux artifacts are built from the same air-gapped source policy and include SHA-256 manifests + GPG signatures.
 
-### Verified v1.0.5 Build Facts
+### Verified v1.0.6 Build Facts
 
 | Item | Value |
 |:-----|:------|
-| Workbench app | `1.0.5` |
+| Workbench app | `1.0.6` |
 | Decoder backend | `qector-decoder-v3 1.0.0` bundled wheel |
 | MCP server | `85` tools over stdio JSON-RPC 2.0 |
 | MCP protocol | `2024-11-05` |
@@ -136,9 +141,9 @@ air-gapped source policy and include SHA-256 manifests.
 
 ---
 
-## ? Features
+## ✨ Features
 
-### ??? Nine Interactive Tabs + Live Console
+### ✨ Nine Interactive Tabs + Live Console
 
 <table>
 <tr>
@@ -148,12 +153,12 @@ air-gapped source policy and include SHA-256 manifests.
 Build and inspect **10 code families** with configurable parameters. View qubit/check counts, distance, code rate, and interactive Tanner graph visualizations.
 
 #### 🧪 Decoder Lab
-Interactive single-syndrome decoding with **17 decoder algorithms**. Tunable BP-OSD parameters, resilient fallback mode, clear cache controls, and detailed correction analysis.
+Interactive single-syndrome decoding with **19 decoder algorithms**. Tunable BP-OSD parameters, resilient fallback mode, clear cache controls, and detailed correction analysis.
 
 #### 📈 Benchmark Suite
 Configurable decode benchmarks with throughput, latency (mean / p50 / p99 / min / max), and multi-panel Matplotlib charts. Export results to JSON.
 
-#### ? Batch & Streaming
+#### 📦 Batch & Streaming
 Batch decoding with explicit CPU / CUDA / OpenCL routing. Streaming decode with sliding-window commit semantics and live logical error rate tracking.
 
 </td>
@@ -225,13 +230,13 @@ for lab evaluation; live identity sign-in is disabled in the air-gapped build.
 
 ---
 
-### 🛠️ 85-Tool MCP Server
+### 🛠️ 86-tool MCP Server
 
 Full Model Context Protocol integration for headless AI/LLM workflows:
 
 - **Transport:** stdio JSON-RPC 2.0 (protocol version `2024-11-05`)
 - **No HTTP bridge, no port binding** · pure stdin/stdout newline-delimited JSON-RPC
-- **All 85 tools** wired to the live backend API
+- **All 86 tools** wired to the live backend API
 - **Per-tool 60-second timeouts**, busy guards, and 10 MB frame limits protect long-running agents
 
 <details>
@@ -267,7 +272,7 @@ Benchmark tab or CLI locally when measurements are required.
 ## 💻 CLI Reference
 
 ```
-QectorWorkbench-Portable.exe <command> [options]
+QectorWorkbench-Portable --cli <command>  # or qector-workbench <command> [options]
 ```
 
 ### Global Flags
@@ -313,48 +318,48 @@ These flags are available on all commands:
 
 ### Examples
 
-```powershell
+```bash
 # Decode with exact Blossom MWPM on a rotated surface code
-QectorWorkbench-Portable.exe decode `
-    --family rotated_surface --distance 5 `
+./QectorWorkbench-Portable --cli decode \
+    --family rotated_surface --distance 5 \
     --decoder blossom --error-rate 0.05
 
 # Compare multiple decoders on a rotated surface code
-QectorWorkbench-Portable.exe compare `
-    --family rotated_surface --distance 5 `
+./QectorWorkbench-Portable --cli compare \
+    --family rotated_surface --distance 5 \
     --decoders blossom,bp_osd,union_find
 
 # Batch decode 1000 samples on CPU
-QectorWorkbench-Portable.exe batch `
-    --family rotated_surface --distance 5 `
+./QectorWorkbench-Portable --cli batch \
+    --family rotated_surface --distance 5 \
     --backend cpu --samples 1000
 
 # Run a sliding window streaming decode session
-QectorWorkbench-Portable.exe stream `
-    --family rotated_surface --distance 5 `
+./QectorWorkbench-Portable --cli stream \
+    --family rotated_surface --distance 5 \
     --window 5 --n-rounds 100
 
 # Train neural predecoder for a repetition code
-QectorWorkbench-Portable.exe train `
+./QectorWorkbench-Portable --cli train \
     --family repetition --distance 3 `
     --samples 200 --epochs 5
 
 # Export a complete session to a zip file
-QectorWorkbench-Portable.exe export `
+./QectorWorkbench-Portable --cli export \
     --family rotated_surface --decoder blossom --output session.zip
 
 # Import external syndrome and decode it
-QectorWorkbench-Portable.exe import `
+./QectorWorkbench-Portable --cli import \
     --file syndrome.csv --decoder blossom --family rotated_surface --distance 5
 
 # Display compatibility matrix as an ASCII table
-QectorWorkbench-Portable.exe matrix --format table
+./QectorWorkbench-Portable --cli matrix --format table
 
 # Run 15-check environment diagnostic
-QectorWorkbench-Portable.exe doctor
+./QectorWorkbench-Portable --cli doctor
 
 # Verify the air-gapped / zero-egress compliance posture
-QectorWorkbench-Portable.exe compliance
+./QectorWorkbench-Portable --cli compliance
 ```
 
 ---
@@ -376,8 +381,8 @@ QectorWorkbench-Portable.exe compliance
 
 The workbench uses a **zero-config runtime provisioner** for the `qector-decoder-v3` backend:
 
-1. **Bundled wheel** · The portable `.exe` ships with an embedded, ABI-matched wheel
-2. **Managed site** · Falls back to a per-user, ABI-partitioned managed site (`decoder_site/<abi_tag>`)
+1. **Bundled wheel** · The portable ELF ships with 5 embedded manylinux wheels (cp39-cp313)
+2. **Managed site** · Extracted to `~/.local/share/QectorWorkbench/decoder_site/<abi_tag>`
 3. **PyPI fallback** · If neither is available, downloads the correct wheel from PyPI
 4. **Self-heal** · On corruption, extracts the bundled wheel and rebuilds the managed site
 5. **Version purge** · Outdated managed decoders from older releases are removed automatically
@@ -388,7 +393,7 @@ The workbench uses a **zero-config runtime provisioner** for the `qector-decoder
 
 ## 🛡️ Air-Gapped Hardening Status
 
-The v1.0.5 public package is designed for offline lab use after download and
+The v1.0.6 public package is designed for offline lab use after download and
 extraction. Implemented in this release:
 
 - Bundled decoder wheel activation works without internet access
@@ -404,7 +409,7 @@ Status tracking ships in the release package as `AIR_GAPPED_HARDENING_STATUS.md`
 
 ## 🤖 Claude Plugin Compatibility
 
-Both the **Windows** and **Linux** v1.0.5 releases of QECTOR Decoder Workbench are
+Both the **Windows** and **Linux** v1.0.6 releases of QECTOR Decoder Workbench are
 **fully compatible** with the official
 [QECTOR Claude Plugin](https://github.com/GuillaumeLessard/qector-claude-plugin)
 (`qector-claude-plugin`) for **Claude Code** and **Claude Desktop**:
@@ -496,7 +501,7 @@ Separately licensed, source-available Rust/Python platform by the same author:
 ---
 
 <p align="center">
-  <strong>QECTOR Decoder Workbench v1.0.5</strong><br/>
+  <strong>QECTOR Decoder Workbench v1.0.6</strong><br/>
   Built on <code>qector-decoder-v3</code> v1.0.0 (Rust/PyO3 core)<br/><br/>
   · 2026 Guillaume Lessard / iD01t Productions<br/>
   ORCID <a href="https://orcid.org/0009-0000-3465-3753">0009-0000-3465-3753</a><br/><br/>
