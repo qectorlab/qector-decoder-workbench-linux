@@ -1,4 +1,4 @@
-import os
+﻿import os
 
 os.environ["QECTOR_SILENT"] = "1"
 
@@ -6,8 +6,8 @@ os.environ["QECTOR_SILENT"] = "1"
 # release line (1.0.x) and is deliberately INDEPENDENT of BACKEND_VERSION
 # below: the decoder ships on its own cadence, and copying its number here has
 # already caused a release to be labelled with the backend's version.
-WORKBENCH_VERSION = "1.0.6"
-DOC_GENERATOR_VERSION = "1.0.6"
+WORKBENCH_VERSION = "1.0.7"
+DOC_GENERATOR_VERSION = "1.0.7"
 # Backend: qector-decoder-v3.  It IS bundled into the app as a platform-specific
 # wheel.  decoder_provisioner activates it from the bundled wheel into an
 # ABI-scoped managed site on first launch (offline).  BACKEND_VERSION is the
@@ -29,6 +29,11 @@ AUTHOR = "Guillaume Lessard / iD01t Productions"
 AUTHOR_ORCID = "0009-0000-3465-3753"
 PROJECT_URL = "https://www.qector.store"
 FULL_VERSION = f"QECTOR Decoder Workbench v{WORKBENCH_VERSION}"
+# Baked at build time: `git rev-parse HEAD` â€” used by mcp_server.build_experiment_manifest
+# for air-gapped wheels/bundles where .git is absent. Falls back to None when
+# not a git checkout or git is not installed; build scripts overwrite this
+# placeholder with the current commit before sdist/wheel/bundle.
+__version_hash__ = "47302488d93e5c47a188670e06085c0372dc84b5"
 
 # ---------------------------------------------------------------------------
 # Developer / business information, surfaced in-app (Documentation tab) and CLI.
@@ -59,3 +64,6 @@ def business_info() -> dict:
         "licence": LICENCE_SUMMARY,
         "evaluation": LICENCE_EVALUATION,
     }
+
+
+
